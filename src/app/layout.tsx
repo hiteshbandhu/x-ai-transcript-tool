@@ -16,6 +16,18 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "we.trsfrm transcript analysis",
   description: "For internal use of our organisation, using the X-AI Grok-Beta Version",
+  openGraph: {
+    title: "we.trsfrm transcript analysis",
+    description: "AI-powered meeting transcript and document analysis tool",
+    type: "website",
+    siteName: "we.trsfrm",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "we.trsfrm transcript analysis",
+    description: "AI-powered meeting transcript and document analysis tool",
+  }
 };
 
 export default function RootLayout({
