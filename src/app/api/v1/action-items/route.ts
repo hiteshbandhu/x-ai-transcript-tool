@@ -14,7 +14,7 @@ type DocumentSummary = {
 }
 
 const openai = new OpenAI({
-  apiKey: process.env.X_AI_KEY,
+  apiKey: process.env.OPENAI_API_KEY,
   baseURL: "https://api.x.ai/v1",
 })
 
