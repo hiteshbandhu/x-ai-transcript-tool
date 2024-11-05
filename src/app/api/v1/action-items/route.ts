@@ -18,6 +18,30 @@ const openai = new OpenAI({
   baseURL: "https://api.x.ai/v1",
 })
 
+/*
+Example curl request:
+
+curl -X POST http://localhost:3000/api/v1/action-items \
+-H "Content-Type: application/json" \
+-d '{
+  "prompt": "Meeting transcript or document content to analyze"
+}'
+
+Response format:
+{
+  "result": {
+    "title": "Brief title or subject",
+    "summary": "Concise summary of the main discussion points",
+    "participants": ["List of participants"],
+    "date": "Meeting date",
+    "duration": "Meeting duration", 
+    "keyPoints": ["Key discussion points"],
+    "actionItems": ["Action items and tasks"],
+    "nextSteps": ["Follow-up items"]
+  }
+}
+*/
+
 export async function POST(request: Request) {
   try {
     const { prompt } = await request.json()

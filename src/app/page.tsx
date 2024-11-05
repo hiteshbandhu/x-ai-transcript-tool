@@ -74,7 +74,10 @@ const Page = () => {
         throw new Error(data.message || 'Something went wrong')
       }
 
-      const jsonString = data.result.replace(/```json\n|\n```/g, '')
+      // Extract JSON content between ```json and ``` markers
+      const jsonMatch = data.result.match(/```json\n([\s\S]*?)\n```/)
+      const jsonString = jsonMatch ? jsonMatch[1] : data.result
+      
       const parsedResult = JSON.parse(jsonString) as Omit<DocumentSummary, 'id' | 'originalText'>
       
       const newSummary: DocumentSummary = {
@@ -98,7 +101,8 @@ const Page = () => {
       localStorage.setItem('actionItems', JSON.stringify(updatedItems))
       setPrompt('')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to generate action items')
+      console.error('Parsing error:', err)
+      setError(err instanceof Error ? err.message : 'Failed to parse response')
     } finally {
       setLoading(false)
     }
