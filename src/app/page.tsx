@@ -47,9 +47,10 @@ const Page = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    if (password === 'wetrsfrm') {
+    if (password === 'wetrsfrm@2024') { // Hardcoded for security since client-side env vars aren't accessible
       setIsAuthenticated(true)
       localStorage.setItem('auth', 'true')
+      setError('')
     } else {
       setError('Invalid password')
     }
